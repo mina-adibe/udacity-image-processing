@@ -11,6 +11,7 @@ import {
   validationMiddleware,
 } from "./middlewares/validationMiddleware";
 import { validationErrorHandler } from "./middlewares/ErrorHandler";
+import { resizeImage } from "./controllers/resize";
 
 const app = express();
 
@@ -43,7 +44,7 @@ app.get(
   "/convert",
   validateImageResize(),
   validationMiddleware,
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const filename = req.query.filename as string;
     const width = parseInt(req.query.width as string);
     const height = parseInt(req.query.height as string);
@@ -55,20 +56,10 @@ app.get(
       res.render("convert", { image: resizedFilename });
     } else {
       // resize the image and save it to the images folder using sharp
-
-      sharp(`${staticPath}/${filename}.jpg`)
-        .resize(width, height)
-        .toFile(`${staticPath}/${filename}-${width}x${height}.jpg`, (err) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send("Error processing image");
-          } else {
-            // send the resized image to the client
-            res.render("convert", {
-              image: `${filename}-${width}x${height}.jpg`,
-            });
-          }
-        });
+      await resizeImage(width, height, filename, staticPath);
+      res.render("convert", {
+        image: `${filename}-${width}x${height}.jpg`,
+      });
     }
   }
 );
