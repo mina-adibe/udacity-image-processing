@@ -1,0 +1,20 @@
+/* thumbnail image style */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.thumbnail {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+/* full width image style */
+.full-image {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
