@@ -1,18 +1,18 @@
 import sharp from "sharp";
+import * as path from "path";
+import { existsSync } from "fs";
+import { original_image, resized_image } from "../helpers/imagePath";
 
 export const resizeImage = async (
   width: number,
   height: number,
-  filename: string,
-  staticPath: string
+  filename: string
 ): Promise<void> => {
-  // make a try catch block
-
   try {
-    await sharp(`${staticPath}/${filename}.jpg`)
-      .resize(width, height)
-      .toFile(`${staticPath}/${filename}-${width}x${height}.jpg`);
+    await sharp(original_image(filename))
+      .resize(Number(width), Number(height))
+      .toFile(resized_image(filename, width, height));
   } catch (error) {
-    throw new Error(" Error processing image ");
+    throw new Error("Error processing image");
   }
 };
