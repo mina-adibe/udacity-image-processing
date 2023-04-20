@@ -4,8 +4,6 @@ import {
   thumbnails_folder_path,
 } from "../constants/constants";
 
-const image_path = path.resolve(__dirname, `../images`);
-
 export const original_image = (filename: string): string => {
   return path.resolve(__dirname, `${images_folder_path}/${filename}.jpg`);
 };

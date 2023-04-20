@@ -1,13 +1,12 @@
-import express, { Request, Response, Router } from "express";
+import { Request, Response, Router } from "express";
 
-import fs from "fs";
 import {
   validateImagePreview,
   validateImageResize,
   validationMiddleware,
 } from "../middlewares/validationMiddleware";
 import { resizeImage } from "../controllers/resize";
-import { resized_image } from "../helpers/imagePath";
+
 import { checkiIsImageExist } from "../models/is-image-exist";
 
 const routes = Router();

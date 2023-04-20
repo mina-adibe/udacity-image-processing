@@ -5,26 +5,27 @@
   "main": "index.js",
   "devDependencies": {
     "@types/body-parser": "^1.19.2",
+    "@types/ejs": "^3.1.2",
     "@types/express": "^4.17.17",
+    "@types/fs-extra": "^11.0.1",
     "@types/jasmine": "^4.3.1",
     "@types/morgan": "^1.9.4",
     "@types/node": "^18.15.11",
     "@types/qs": "^6.9.7",
     "@types/range-parser": "^1.2.4",
     "@types/serve-static": "^1.15.1",
+    "@types/supertest": "^2.0.12",
     "jasmine-spec-reporter": "^7.0.0",
     "nodemon": "^2.0.22",
-    "typescript": "^5.0.4",
-    "@types/ejs": "^3.1.2",
-    "@types/fs-extra": "^11.0.1",
-    "@types/supertest": "^2.0.12"
+    "typescript": "^5.0.4"
   },
   "scripts": {
     "start": "nodemon",
     "build": "rm -rf build && tsc --outDir build",
     "jasmine": "jasmine",
     "test": "npm run build && npm run  jasmine",
-    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix ",
+    "lint": "eslint src/**/*.ts --fix ",
     "prettier": "prettier --config .prettierrc src/**/*.ts --write"
   },
   "repository": {
@@ -38,13 +39,18 @@
   },
   "homepage": "https://github.com/mina-adibe/udacity-image-processing#readme",
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "express": "^4.18.2",
     "express-validator": "^7.0.0",
     "fs-extra": "^11.1.1",
     "jasmine": "^4.6.0",
     "morgan": "^1.10.0",
+    "prettier": "^2.8.7",
     "sharp": "^0.32.0",
     "supertest": "^6.3.3"
   }

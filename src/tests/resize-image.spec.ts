@@ -1,6 +1,4 @@
-import sharp from "sharp";
 import { resizeImage } from "../controllers/resize";
-import { resized_image } from "../helpers/imagePath";
 
 describe("resizeImage", () => {
   it("should throw an error if there is an error processing the image", async () => {

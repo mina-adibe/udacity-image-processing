@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
 export const validationErrorHandler = (
-  err: any,
+  err: unknown,
   req: Request,
   res: Response,
   next: NextFunction
