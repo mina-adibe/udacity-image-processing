@@ -1,6 +1,5 @@
 import sharp from "sharp";
-import * as path from "path";
-import { existsSync } from "fs";
+
 import { original_image, resized_image } from "../helpers/imagePath";
 
 export const resizeImage = async (

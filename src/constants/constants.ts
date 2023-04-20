@@ -1,13 +1,13 @@
 import * as path from "path";
 
-const image_path = path.resolve(__dirname, `../images`);
+const images_folder_path = path.resolve(__dirname, `../images/full/`);
+const thumbnails_folder_path = path.resolve(__dirname, `../images/thumbnails/`);
 
-const original_image_path = path.resolve(
-  __dirname,
-  `../${image_path}/${filename}.jpg`
-);
+const IMAGES_FOLDER: readonly string[] = [
+  "palmtunnel",
+  "encenadaport",
+  "fjord",
+  "santamonica",
+];
 
-const resized_image_path = path.resolve(
-  __dirname,
-  `../${image_path}/${filename}-${width}x${height}.jpg`
-);
+export { images_folder_path, thumbnails_folder_path, IMAGES_FOLDER };

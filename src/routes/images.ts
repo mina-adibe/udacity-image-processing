@@ -1,8 +1,4 @@
 import express, { Request, Response, Router } from "express";
-import * as path from "path";
-import morgan from "morgan";
-
-import sharp from "sharp";
 
 import fs from "fs";
 import {
@@ -12,6 +8,7 @@ import {
 } from "../middlewares/validationMiddleware";
 import { resizeImage } from "../controllers/resize";
 import { resized_image } from "../helpers/imagePath";
+import { checkiIsImageExist } from "../models/is-image-exist";
 
 const routes = Router();
 routes.get(
@@ -36,7 +33,9 @@ routes.get(
 
     const resizedFilename = `${filename}-${width}x${height}.jpg`;
 
-    if (fs.existsSync(resized_image(resizedFilename, width, height))) {
+    const IfImageExist = await checkiIsImageExist(filename, width, height);
+
+    if (IfImageExist) {
       res.render("convert", { image: resizedFilename });
     } else {
       await resizeImage(width, height, filename);

@@ -2,9 +2,10 @@ import express, { Request, Response, Router } from "express";
 import * as path from "path";
 import morgan from "morgan";
 
-import sharp from "sharp";
+import dotenv from "dotenv";
+dotenv.config();
 
-import fs from "fs";
+const PORT = process.env.PORT || 3000;
 import {
   validateImagePreview,
   validateImageResize,
@@ -32,6 +33,8 @@ app.use(validationErrorHandler);
 
 app.use(morgan("dev"));
 
-app.listen(3001, () => {
-  console.log("Server is listening on port 3001.");
+app.listen(PORT, () => {
+  console.log("Server is listening on port" + PORT);
 });
+
+export default app;

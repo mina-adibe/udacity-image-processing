@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import { query, validationResult } from "express-validator";
+import { IMAGES_FOLDER } from "../constants/constants";
 
 // Define the validation middleware function
 export const validateImageResize = () => [
   query("filename")
     .exists()
     .withMessage("file should existe ")
-    .isIn(["imagea", "imageb", "imagec , imaged"])
+    .isIn(IMAGES_FOLDER)
     .withMessage(" theis file is not exist")
     .notEmpty()
     .withMessage("file should not be empty"),
@@ -28,7 +29,7 @@ export const validateImagePreview = () => [
   query("filename")
     .exists()
     .withMessage("file should existe ")
-    .isIn(["imagea", "imageb", "imagec , imaged"])
+    .isIn(IMAGES_FOLDER)
     .withMessage(" the is file is not exist")
     .notEmpty()
     .withMessage("file should not be empty"),
