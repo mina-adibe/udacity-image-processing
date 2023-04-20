@@ -22,7 +22,7 @@
 #### Installing The Project in **_Development Mode_**
 
 1. Clone the repository by running this command
-   `git clone `.
+   `git clone https://github.com/mina-adibe/udacity-image-processing.git`.
 2. Go to the project directory `cd image-processing-api`.
 3. Install packages with `npm install`.
 4. Run in development mode `npm run dev`.
